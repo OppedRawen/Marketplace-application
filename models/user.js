@@ -17,9 +17,11 @@ User.init(
             primaryKey: true,
             autoIncrement: true
         },
+        //changed allowNull to true so only email is required to login
         name: {
             type: DataTypes.STRING(20),
-            allowNull: false
+            allowNull: true,
+            defaultValue: ""
         },
         email: {
             type: DataTypes.STRING(35),
@@ -37,13 +39,16 @@ User.init(
                 //Pass Length min 8 characters
                 len: [8]
             },
+        },
+        has_pic: {
+            type: DataTypes.BOOLEAN, 
+        },
         // In case we want to add "Member since {{user_created}}!!!"
         user_created: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW
-        }
-        },
+        },    
     },
     {
     //Encrypts created users password.
@@ -51,6 +56,10 @@ User.init(
           beforeCreate: async (newUserData) => {
             newUserData.password = await bcrypt.hash(newUserData.password, 10);
             return newUserData;
+          },
+          beforeUpdate: async (updatedUserData) => {
+            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+            return updatedUserData;
           },
         },
         sequelize,

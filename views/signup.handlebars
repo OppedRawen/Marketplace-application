@@ -1,10 +1,30 @@
-<h2>Sign up</h2>
-<form action  = "/signup" method="post">
-<label for="name">Email</label>
-<input type ="text" name="name" placeholder="Name">
-<label for="password">Password</label>
-<input type ="password" name="password" placeholder="Password">
-<input type="submit" class="bg-yellow border border-yellow rounded-r-md">
-</form>
 
-<a href="/login" >Login</a>
+<section class="flex justify-center text-center">
+<div class="mx-auto max-w-md">
+<h2 class="font-bold" style="margin-bottom: 0.7rem;">Sign up:</h2>
+<form action="/signup" class="signup-form">
+  <ul class="mb-4">
+    <li>
+  <input type="text" name="name" placeholder="Name" id="name-signup" style="margin-bottom: 0.5rem;"/>
+    </li>
+    <li>
+  <input type="text" name="email" placeholder="email" id="email-signup"style="margin-bottom: 0.5rem;" />
+    </li>
+    <li>
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    id="password-signup"
+    style="margin-bottom: 0.5rem;"/>
+    </li>
+    </ul>
+  <button
+    type="submit"
+    class='btn sm:visible md:btn-md sm:m-1 sm:w-auto sm:h-auto sm:p-2 md:text-lg'>Submit</button>
+</form>
+<h2>Already a member?</h2>
+<a href="/login" class='btn sm:visible md:btn-md sm:m-1 sm:w-auto sm:h-auto sm:p-2 md:text-lg'>Login</a>
+</div>
+</section>
+<script src="./js/signup.js"></script>
